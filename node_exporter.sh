@@ -19,7 +19,7 @@ sudo mv node_exporter-1.5.0.linux-amd64/node_exporter /usr/local/bin/
 node_exporter --version
 
 # membuat service node_exporter
-sudo cat <<EOF > vim /etc/systemd/system/node_exporter.service
+sudo cat <<EOF > /etc/systemd/system/node_exporter.service
 [Unit]
 Description=Node Exporter
 Wants=network-online.target
