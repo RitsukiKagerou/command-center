@@ -31,7 +31,7 @@ sudo chown -R prometheus:prometheus /etc/prometheus/ /data/
 prometheus --version
 
 # file konfigurasi prometeus 
-cat <<EOF > /etc/systemd/system/prometheus.service
+sudo cat <<EOF > /etc/systemd/system/prometheus.service
 [Unit]
 Description=Prometheus
 Wants=network-online.target
@@ -65,7 +65,7 @@ sudo systemctl enable prometheus
 sudo systemctl start prometheus
 
 # cek status service prometheus
-sudo systemctl status prometheus
+# sudo systemctl status prometheus
 
 # jika ingin melihat log dari service prometehus
 # journalctl -u prometheus -f --no-pager
