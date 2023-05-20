@@ -31,7 +31,7 @@ sudo chown -R prometheus:prometheus /etc/prometheus/ /data/
 prometheus --version
 
 # file konfigurasi prometeus 
-sudo cat <<EOF > /etc/systemd/system/prometheus.service
+ sudo bash -c 'cat <<EOF > /etc/systemd/system/prometheus.service
 [Unit]
 Description=Prometheus
 Wants=network-online.target
@@ -56,7 +56,7 @@ ExecStart=/usr/local/bin/prometheus \
 
 [Install]
 WantedBy=multi-user.target
-EOF
+EOF'
 
 # enable service, supaya kalau system up service juga ikut up
 sudo systemctl enable prometheus

@@ -19,7 +19,7 @@ sudo mv node_exporter-1.5.0.linux-amd64/node_exporter /usr/local/bin/
 node_exporter --version
 
 # membuat service node_exporter
-sudo cat <<EOF > /etc/systemd/system/node_exporter.service
+sudo bash -c 'cat <<EOF > /etc/systemd/system/node_exporter.service
 [Unit]
 Description=Node Exporter
 Wants=network-online.target
@@ -39,7 +39,7 @@ ExecStart=/usr/local/bin/node_exporter \
 
 [Install]
 WantedBy=multi-user.target
-EOF
+EOF'
 
 # set enable service node_exporter
 sudo systemctl enable node_exporter
@@ -54,11 +54,11 @@ sudo systemctl start node_exporter
 # journalctl -u node_exporter -f --no-pager
 
 #tambah ini di config prometheus untuk job node_exporter
-sudo cat <<EOF >> /etc/prometheus/prometheus.yml
+sudo bash -c 'cat <<EOF >> /etc/prometheus/prometheus.yml
    - job_name: node_export
      static_configs:
        - targets: ["localhost:9100"]
-EOF
+EOF'
 
 # check configurasi prometheus
 # promtool check config /etc/prometheus/prometheus.yml

@@ -23,7 +23,7 @@ sudo systemctl start grafana-server
 # sudo systemctl status grafana-server
 
 # tambahkan datasource promtheus ke grafana
-sudo cat <<EOF > /etc/grafana/provisioning/datasources/datasources.yaml
+sudo bash -c 'cat <<EOF > /etc/grafana/provisioning/datasources/datasources.yaml
 apiVersion: 1
 
 datasources:
@@ -31,7 +31,7 @@ datasources:
     type: prometheus
     url: http://localhost:9090
     isDefault: true
-EOF
+EOF'
 
 # restart grafana supaya datasource ter load
 sudo systemctl restart grafana-server
